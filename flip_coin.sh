@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash -x
 echo "Coin Flip Simulation"
 for i in {1..43}
 do
@@ -14,12 +14,9 @@ do
 		break
 	fi
 done
-if [[ $ctHead > $ctTail ]]
+if [[ $ctHead -gt $ctTail ]]
 then
 	echo "Heads have won by "$(( $ctHead - $ctTail ))
-elif [[ $ctHead < $ctTail ]]
-then
-	echo "Tails have won by "$(( $ctTail - $ctHead ))
 else
-	echo "Its a Tie"
+	echo "Tails have won by "$(( $ctTail - $ctHead ))
 fi
