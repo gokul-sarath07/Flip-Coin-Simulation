@@ -1,6 +1,6 @@
 #!/bin/bash
 echo "Coin Flip Simulation"
-for i in {1..10}
+for i in {1..43}
 do
 	check=$(( RANDOM%2 ))
 	if [[ $check -eq 1 ]]
@@ -9,6 +9,17 @@ do
 	else
 		ctTail=$(( $ctTail + 1 ))
 	fi
+	if [[ $ctHead -eq 21 || $ctTail -eq 21 ]]
+	then
+		break
+	fi
 done
-echo "Total Head: "$ctHead
-echo "Total Tail: "$ctTail
+if [[ $ctHead > $ctTail ]]
+then
+	echo "Heads have won by "$(( $ctHead - $ctTail ))
+elif [[ $ctHead < $ctTail ]]
+then
+	echo "Tails have won by "$(( $ctTail - $ctHead ))
+else
+	echo "Its a Tie"
+fi
